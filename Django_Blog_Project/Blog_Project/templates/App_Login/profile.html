@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title_block %} {{ title }} {% endblock title_block %}
+{% block body_block %}
+<div class="border border-primary rounded-1 m-2 p-2">
+<h3 style ="text-align:center"> Your Profile </h3>
+    <div class="row">
+        <div class ="col-3">
+            {% if user.user_profile %}
+            <img src="/media/{{ user.user_profile.profile_pic }}">
+            <br>
+            <br>
+            <a href="{% url "App_Login:update_profile_picture" %}" class="btn btn-info btn-sm mx-3"> Update Profile Picture </a>
+            {% else %}
+            <img src="/media/profile_pics/images.jpg" class="rounded mx-3 " width ="150px">
+            <br>
+            <br>
+            <a href="{% url "App_Login:upload_profile_picture" %}" class="btn btn-info btn-sm mx-3"> Upload Profile Picture  </a>
+            {% endif %}
+
+        </div>
+        <div class ="col-9">
+            <p><b>Username:</b> {{ user.username }} </p>
+            <p><b>Email:</b> {{ user.email }} </p>
+            <p><b>Name:</b> {{ user.first_name }} {{ user.last_name }} </p>
+        </div>
+    </div>
+</div>
+<div class="border border-primary rounded-1 m-2 p-2">
+    <a class="btn btn-success btn-md" href="{% url "App_Login:update_profile" %}"> Update Profile </a>  <a href="{% url "App_Login:change_password" %}" class = "btn btn-success btn-md"> Change Password </a>
+</div>
+{% endblock body_block %}
