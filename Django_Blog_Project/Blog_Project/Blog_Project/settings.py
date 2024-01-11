@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Blog_App',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,7 @@ STATICFILES_DIR = [STATIC_DIR,]
 # MEDIAFILES
 
 MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 
 

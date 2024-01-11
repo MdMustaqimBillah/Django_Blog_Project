@@ -80,12 +80,12 @@ def update_profile_picture(request):
     current_user = request.user
     form = UpdateProfilePictureForm(instance = current_user.user_profile)
     if request.method == 'POST':
-        form = UpdateProfilePictureForm(request.POST,request.FILES ,instance = current_user)
+        form = UpdateProfilePictureForm(request.POST,request.FILES ,instance = current_user.user_profile)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('App_Login:profile'))
     dictionary ={'title':'Update Profile Picture', 'form': form}
-    return render(request,'App_Login.html/update_profile.html',context=dictionary)
+    return render(request,'App_Login/update_profile_pic.html',context=dictionary)
 
 
 @login_required
